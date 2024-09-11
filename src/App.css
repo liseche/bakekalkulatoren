@@ -1,38 +1,200 @@
-.App {
-  text-align: center;
+/* Full-height layout */
+html,
+body,
+.app-container {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-image: url('media/bake2.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.cute-header {
+  font-family: 'Fredoka One', sans-serif;
+  /* Fat and rounded font choice */
+  transition: transform 0.3s ease;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  /* Centers items horizontally */
+  align-items: center;
+  /* Centers items vertically (if needed) */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.headerTitle {
+  font-size: 5.291vw;
+  /* Large and bold for the 'fat' look */
+  color: #96fffe;
+  /* Vibrant pink color */
+  text-shadow:
+    -0.132vw -0.132vw 0 #ffffff,
+    /* Top left shadow */
+    0.132vw -0.132vw 0 #d4faff,
+    /* Top right shadow */
+    -0.132vw 0.132vw 0 #e0ffff,
+    /* Bottom left shadow */
+    0.132vw 0.132vw 0 #ffffff,
+    /* Bottom right shadow */
+    -0.198vw -0.198vw 0 #00fffb,
+    /* Extra thick shadows to enhance bubbly look */
+    -0.265vw -0.265vw 0 #00e4e0,
+    -0.265vw 0.265vw 0 #00e4e0,
+    0.265vw -0.265vw 0 #00e4e0,
+    0.265vw 0.265vw 0 #00e4e0;
+  gap: 0.661vw;
+  transition: transform 0.2s, text-shadow 0.2s;
+}
+
+.headerTitle:hover {
+  transform: scale(1.05);
+}
+
+.sparkle {
+  font-size: 2rem;
+  animation: sparkleEffect 1s infinite alternate;
+}
+
+@keyframes sparkleEffect {
+  0% {
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: rotate(20deg) scale(1.2);
+    opacity: 0.8;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.headerIcon {
+  width: 5.291vw;
+  height: auto;
+  margin-left: 10px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.content {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  /* Evenly distribute space between children */
+  gap: 20px;
+  /* Adds consistent spacing between elements */
+  padding: 20px;
+  font-family: 'Fredoka One', sans-serif;
+  color: #FF007F;
+  text-shadow:
+    -1px -1px 0 #ffffff,
+    1px -1px 0 #FF69B4,
+    -1px 1px 0 #FF69B4,
+    1px 1px 0 #ffffff,
+    -2px -2px 0 #FF007F,
+    -2px 2px 0 #FF007F,
+    2px -2px 0 #FF007F,
+    2px 2px 0 #FF007F;
+  letter-spacing: 0.2em;
+  hyphens: manual;
+}
+
+/* Grid layout with responsive columns */
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  /* Default to single column */
+  gap: 20px;
+  width: 100%;
+  max-width: 1400px;
+  /* Maximum width for responsiveness */
+}
+
+/* Responsive layout: 3 columns on larger screens */
+@media (min-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr 2fr 2fr;
+    /* Three columns with specified widths */
+  }
+}
+
+/* First column with check-off boxes */
+.checkbox-column {
+  background-color: #f8f8f8;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow-y: auto;
+  /* Allows scrolling if content is too long */
+}
+
+.checkbox-list label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.checkbox-list input {
+  margin-right: 10px;
+}
+
+/* Second column for text input */
+.input-column {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.big-text-field {
+  font-family: 'Fredoka One', sans-serif;
+  width: 100%;
+  height: 400px;
+  padding: 20px;
+  font-size: 18px;
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  resize: none;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.big-text-field::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+.big-text-field:focus {
+  border-color: #ffcccb;
+  box-shadow: 0 4px 14px rgba(255, 204, 204, 0.4);
+}
+
+/* Third column for displaying text */
+.display-column {
+  background-color: #f0f0ff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.display-text {
+  width: 100%;
+  height: 400px;
+  overflow-y: auto;
+  /* Allows scrolling if the text is long */
+  padding: 10px;
 }
